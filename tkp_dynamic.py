@@ -167,7 +167,7 @@ if __name__ == "__main__":
     csvread = CSVReader()
     node_lst = csvread.create_tree()
     tkp_root = node_lst[0]
-    solver = Solver_dynamic(tkp_root, 200)
+    solver = Solver_dynamic(tkp_root, 30)
     solution = solver.knapsack()
     csvwrite = CSVWriter(solution, tkp_root)
     csvwrite.write_csv()
