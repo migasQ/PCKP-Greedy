@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Dec 14 19:16:13 2018
-
-@author: Matthias Bischof
+@author: Matthias Bischof, Jens Hambach
 """
 
 import anytree
 import csv
 
 # Only supports one precedence constraint for each node
-
 class CSVReader(object):
     # Reads out CSV files formatted as a matrices: one for costs, one for profits
     def __init__(self, cost_filename = 'cost.csv', profit_filename='profit.csv'):
