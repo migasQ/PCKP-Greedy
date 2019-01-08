@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Dec 14 19:16:13 2018
-@author: Matthias Bischof, Jens Hambach
+
+@author: Matthias Bischof
 """
 
 import anytree
 import csv
 
 # Only supports one precedence constraint for each node
+
 class CSVReader(object):
     # Reads out CSV files formatted as a matrices: one for costs, one for profits
     def __init__(self, cost_filename = 'cost.csv', profit_filename='profit.csv'):
@@ -162,16 +164,17 @@ class CSVWriter(object):
             csvwriter.writerow(['Profit:', self.solution_profit])
 
 if __name__ == "__main__":
-	# Define capacity value before running
-    capacity_value = 50
-
+    # Define a numer of capacity values to try before running
+    capacity_value_min = 1
+    capacity_value_max = 75
+    
     # Main
-    csvread = CSVReader()
-    node_lst = csvread.create_tree()
-    tkp_root = node_lst[0]
-    solver = Solver_dynamic(tkp_root, capacity_value)
-    solution = solver.knapsack()
-    print("Capacity value ; Used capacity value ; Profit")    
-    print(capacity_value, ";", solution[0], ";", solution[1])
-    csvwrite = CSVWriter(solution, tkp_root)
-    csvwrite.write_csv()
+    print("Capacity value ; Used capacity value ; Profit")
+    while capacity_value_min <= capacity_value_max:
+        csvread = CSVReader()
+        node_lst = csvread.create_tree()
+        tkp_root = node_lst[0]
+        solver = Solver_dynamic(tkp_root, capacity_value_min)
+        solution = solver.knapsack()
+        print(capacity_value_min, ";", solution[0], ";", solution[1])        
+        capacity_value_min += 1           
