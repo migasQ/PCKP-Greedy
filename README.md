@@ -13,3 +13,5 @@ Furthermore one has to give the weight limit, which is hardcoded right now.
 The output is a third csv which has entries equal to 1 for each item taken into the solution and 0 otherwise.
 
 Make sure that if you want to change the name of the input files, you have to put the names into the code.
+
+Matthias Bischof, Jens Hambach (2019)
